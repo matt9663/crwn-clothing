@@ -6,19 +6,15 @@ import { toggleCartVisibility } from "../../redux/cart/cart.actions";
 
 const CartIcon = ({ hidden, toggleCartVisibility }) => {
   return (
-    <div className="cart-icon" onClick={() => toggleCartVisibility(hidden)}>
+    <div className="cart-icon" onClick={toggleCartVisibility}>
       <ShoppingIcon className="shopping-icon" />
       <span className="item-count">0</span>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  hidden: state.cart.hidden,
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  toggleCartVisibility: (hidden) => dispatch(toggleCartVisibility(hidden)),
+  toggleCartVisibility: () => dispatch(toggleCartVisibility()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
+export default connect(null, mapDispatchToProps)(CartIcon);
